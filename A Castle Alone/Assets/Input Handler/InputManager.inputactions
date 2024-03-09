@@ -105,7 +105,7 @@
                 {
                     "name": "",
                     "id": "2be4a918-21d5-4209-a45e-ca1d505c2769",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "StickDeadzone",
                     "groups": "Gamepad",

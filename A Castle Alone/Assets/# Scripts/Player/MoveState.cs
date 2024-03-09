@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveState : MonoBehaviour
+public class MoveState : State
 {
-    // Start is called before the first frame update
-    void Start()
+    private int xInput;
+    private int yInput;
+
+    public MoveState(Player player, StateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void LogicUpdate()
     {
-        
+        base.LogicUpdate();
+
+        xInput = player.InputManager.NormInputX;
+        yInput = player.InputManager.NormInputY;
+
+        player.CheckIfShouldFlip(xInput);
+
+        player.SetVelocityX(10 * xInput);
+
+        if (xInput == 0) {
+            stateMachine.ChangeState(player.IdleState);
+        }
     }
 }
